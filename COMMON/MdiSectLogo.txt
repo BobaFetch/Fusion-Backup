@@ -1,0 +1,18 @@
+MdiSectLogo
+
+If not completed, then do the the following:
+
+	Remove all ESI trademark related images from the MdiSect.SideBar
+	and MdiSect.TopBar.
+
+	Add an Image Control to MdiSect.SideBar.  Name the Image Logo.
+	Place it somewhere below the GroupButtons.
+
+	Copy Logo and paste it on MdiSect.TopBar to create an IndexArray.
+	Place it somewhere to the right of the buttons.
+
+Add the provided ES2000.bmp to Logo(0) and Logo(1).  The actual location
+of the Images is controled by EsiProj.bas depending on the workstation
+monitor resolution.
+
+

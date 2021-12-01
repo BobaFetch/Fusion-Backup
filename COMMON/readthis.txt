@@ -1,0 +1,9 @@
+EsiProj.bas:
+Added some previously undocumented errors to DoModuleErrors and updated some
+others.  Expanded the width of the Event for legibility.
+
+LotSelect:
+Corrected the collection array.
+
+diaAbt:
+Added the Section (App) version for trainers benefit.

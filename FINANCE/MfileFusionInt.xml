@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<FusionIntegrator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.cpandl.com">
+	<MVault VaultName="Sample Vault" DOCClassID="93"/>
+	<MCommand Directive="Insert" ConfigurationReferenceID="1"/>
+	<MDocument KeyObject="MaterialPO" Container="Material Purchase Orders" Name="PO-41582-637701-08">
+	<MMetaData Name="SystemLotNumber" Id="1148">
+		<data>41582-637701-08</data>
+	</MMetaData>
+	<MMetaData Name="UserLotNumber" Id="1149">
+		<data>PO 092947-Item 1-11/04/2013</data>
+	</MMetaData>
+	<MMetaData Name="PartNumber" Id="1147">
+		<data>413A3312-37B-38BM</data>
+	</MMetaData>
+	<MMetaData Name="Vendor" Id="1146">
+		<data>TMXB</data>
+	</MMetaData>
+	<MMetaData Name="PONumber" Id="1145">
+		<data>092947</data>
+	</MMetaData>
+</MDocument></FusionIntegrator>

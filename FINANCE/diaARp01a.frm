@@ -1,0 +1,1243 @@
+VERSION 5.00
+Object = "{A964BDA3-3E93-11CF-9A0F-9E6261DACD1C}#3.7#0"; "resize32.ocx"
+Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "threed32.ocx"
+Begin VB.Form diaARp01a 
+   BorderStyle     =   3  'Fixed Dialog
+   Caption         =   "Customer Invoices (Report)"
+   ClientHeight    =   5070
+   ClientLeft      =   2115
+   ClientTop       =   1125
+   ClientWidth     =   7200
+   ClipControls    =   0   'False
+   ControlBox      =   0   'False
+   ForeColor       =   &H00000000&
+   LinkTopic       =   "Form1"
+   MDIChild        =   -1  'True
+   MinButton       =   0   'False
+   PaletteMode     =   1  'UseZOrder
+   ScaleHeight     =   5070
+   ScaleWidth      =   7200
+   ShowInTaskbar   =   0   'False
+   Begin VB.ComboBox txtSDte 
+      Height          =   315
+      Left            =   2160
+      TabIndex        =   2
+      Tag             =   "4"
+      Top             =   2640
+      Width           =   1095
+   End
+   Begin VB.CheckBox cbShowCheck 
+      Caption         =   "___"
+      ForeColor       =   &H8000000F&
+      Height          =   255
+      Left            =   2160
+      TabIndex        =   30
+      Top             =   4620
+      Width           =   735
+   End
+   Begin VB.CommandButton cmdMail 
+      Height          =   330
+      Left            =   6120
+      Picture         =   "diaARp01a.frx":0000
+      Style           =   1  'Graphical
+      TabIndex        =   29
+      ToolTipText     =   "Email"
+      Top             =   900
+      UseMaskColor    =   -1  'True
+      Width           =   495
+   End
+   Begin VB.CheckBox optLot 
+      Caption         =   "___"
+      ForeColor       =   &H8000000F&
+      Height          =   255
+      Left            =   2160
+      TabIndex        =   7
+      Top             =   4380
+      Width           =   975
+   End
+   Begin VB.ComboBox cmbInv2 
+      Height          =   315
+      Left            =   2400
+      TabIndex        =   1
+      Tag             =   "3"
+      ToolTipText     =   "If a range is entered, you can only print (not view)"
+      Top             =   1920
+      Width           =   1245
+   End
+   Begin VB.CheckBox optIt 
+      Caption         =   "___"
+      ForeColor       =   &H8000000F&
+      Height          =   255
+      Left            =   2160
+      TabIndex        =   6
+      Top             =   4140
+      Width           =   975
+   End
+   Begin VB.TextBox txtCopies 
+      Height          =   285
+      Left            =   2160
+      MaxLength       =   1
+      TabIndex        =   3
+      Tag             =   "1"
+      Top             =   3060
+      Width           =   375
+   End
+   Begin VB.CheckBox optExt 
+      Caption         =   "___"
+      ForeColor       =   &H8000000F&
+      Height          =   255
+      Left            =   2160
+      TabIndex        =   5
+      Top             =   3900
+      Width           =   975
+   End
+   Begin VB.CheckBox optDsc 
+      Caption         =   "___"
+      ForeColor       =   &H8000000F&
+      Height          =   255
+      Left            =   2160
+      TabIndex        =   4
+      Top             =   3660
+      Width           =   975
+   End
+   Begin VB.Frame fraPrn 
+      BorderStyle     =   0  'None
+      Height          =   495
+      Left            =   5880
+      TabIndex        =   13
+      Top             =   360
+      Width           =   1095
+      Begin VB.CommandButton optPrn 
+         Height          =   330
+         Left            =   560
+         Picture         =   "diaARp01a.frx":044D
+         Style           =   1  'Graphical
+         TabIndex        =   9
+         ToolTipText     =   "Print The Report"
+         Top             =   120
+         UseMaskColor    =   -1  'True
+         Width           =   495
+      End
+      Begin VB.CommandButton optDis 
+         Height          =   330
+         Left            =   0
+         Picture         =   "diaARp01a.frx":05D7
+         Style           =   1  'Graphical
+         TabIndex        =   8
+         ToolTipText     =   "Display The Report"
+         Top             =   120
+         UseMaskColor    =   -1  'True
+         Width           =   495
+      End
+   End
+   Begin VB.CommandButton cmdCan 
+      Cancel          =   -1  'True
+      Caption         =   "Close"
+      Height          =   360
+      Left            =   5880
+      TabIndex        =   11
+      TabStop         =   0   'False
+      Top             =   0
+      Width           =   1065
+   End
+   Begin VB.ComboBox cmbInv 
+      Height          =   315
+      ItemData        =   "diaARp01a.frx":0755
+      Left            =   2400
+      List            =   "diaARp01a.frx":0757
+      TabIndex        =   0
+      Tag             =   "3"
+      Top             =   1080
+      Width           =   1245
+   End
+   Begin ResizeLibCtl.ReSize ReSize1 
+      Left            =   3600
+      Top             =   0
+      _Version        =   196615
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _StockProps     =   0
+      Enabled         =   -1  'True
+      FormMinWidth    =   0
+      FormMinHeight   =   0
+      FormDesignHeight=   5070
+      FormDesignWidth =   7200
+   End
+   Begin Threed.SSRibbon cmdHlp 
+      Height          =   225
+      Left            =   0
+      TabIndex        =   15
+      ToolTipText     =   "Subject Help"
+      Top             =   0
+      Width           =   255
+      _Version        =   65536
+      _ExtentX        =   450
+      _ExtentY        =   397
+      _StockProps     =   65
+      BackColor       =   12632256
+      GroupAllowAllUp =   -1  'True
+      Autosize        =   2
+      RoundedCorners  =   0   'False
+      BevelWidth      =   0
+      Outline         =   0   'False
+      PictureUp       =   "diaARp01a.frx":0759
+      PictureDn       =   "diaARp01a.frx":089F
+   End
+   Begin Threed.SSRibbon ShowPrinters 
+      Height          =   225
+      Left            =   360
+      TabIndex        =   19
+      ToolTipText     =   "Show System Printers"
+      Top             =   0
+      Width           =   255
+      _Version        =   65536
+      _ExtentX        =   450
+      _ExtentY        =   397
+      _StockProps     =   65
+      BackColor       =   12632256
+      GroupAllowAllUp =   -1  'True
+      RoundedCorners  =   0   'False
+      BevelWidth      =   0
+      Outline         =   0   'False
+      PictureUp       =   "diaARp01a.frx":09E5
+      PictureDn       =   "diaARp01a.frx":0B2B
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Invoice Start Date"
+      Height          =   285
+      Index           =   8
+      Left            =   240
+      TabIndex        =   32
+      Top             =   2640
+      Width           =   1665
+   End
+   Begin VB.Label Label1 
+      Caption         =   "Show Checks Received"
+      Height          =   255
+      Left            =   240
+      TabIndex        =   31
+      Top             =   4620
+      Width           =   1935
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Lot Numbers"
+      Height          =   285
+      Index           =   5
+      Left            =   240
+      TabIndex        =   28
+      Top             =   4380
+      Width           =   1785
+   End
+   Begin VB.Label lblTyp2 
+      BackStyle       =   0  'Transparent
+      BorderStyle     =   1  'Fixed Single
+      Height          =   285
+      Left            =   3720
+      TabIndex        =   27
+      Top             =   1920
+      Width           =   1455
+   End
+   Begin VB.Label lblTyp 
+      BackStyle       =   0  'Transparent
+      BorderStyle     =   1  'Fixed Single
+      Height          =   285
+      Left            =   3720
+      TabIndex        =   26
+      Top             =   1080
+      Width           =   1455
+   End
+   Begin VB.Label lblNme2 
+      BackStyle       =   0  'Transparent
+      BorderStyle     =   1  'Fixed Single
+      Height          =   285
+      Left            =   2400
+      TabIndex        =   25
+      Top             =   2280
+      Width           =   2775
+   End
+   Begin VB.Label lblPre2 
+      BackStyle       =   0  'Transparent
+      BorderStyle     =   1  'Fixed Single
+      Height          =   315
+      Left            =   2160
+      TabIndex        =   24
+      Top             =   1920
+      Width           =   255
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Through."
+      Height          =   285
+      Index           =   1
+      Left            =   240
+      TabIndex        =   23
+      Top             =   1920
+      Width           =   1545
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "SO Item Comments"
+      Height          =   285
+      Index           =   7
+      Left            =   240
+      TabIndex        =   22
+      Top             =   4140
+      Width           =   1785
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Include:"
+      Height          =   285
+      Index           =   6
+      Left            =   240
+      TabIndex        =   21
+      Top             =   3420
+      Width           =   1425
+   End
+   Begin VB.Label lblPrinter 
+      Appearance      =   0  'Flat
+      BorderStyle     =   1  'Fixed Single
+      Caption         =   "Default Printer"
+      ForeColor       =   &H00800000&
+      Height          =   255
+      Left            =   675
+      TabIndex        =   20
+      Top             =   0
+      Width           =   2760
+   End
+   Begin VB.Label lblNme 
+      BackStyle       =   0  'Transparent
+      BorderStyle     =   1  'Fixed Single
+      Height          =   285
+      Left            =   2400
+      TabIndex        =   18
+      Top             =   1440
+      Width           =   2775
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Extended Descriptions"
+      Height          =   285
+      Index           =   4
+      Left            =   240
+      TabIndex        =   17
+      Top             =   3900
+      Width           =   1785
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Part Descriptions"
+      Height          =   285
+      Index           =   3
+      Left            =   240
+      TabIndex        =   16
+      Top             =   3660
+      Width           =   1785
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Number Of Copies"
+      Height          =   285
+      Index           =   2
+      Left            =   240
+      TabIndex        =   14
+      Top             =   3060
+      Width           =   1425
+   End
+   Begin VB.Label lblPre 
+      BackStyle       =   0  'Transparent
+      BorderStyle     =   1  'Fixed Single
+      Height          =   315
+      Left            =   2160
+      TabIndex        =   12
+      Top             =   1080
+      Width           =   255
+   End
+   Begin VB.Label z1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Invoice Number"
+      Height          =   285
+      Index           =   0
+      Left            =   270
+      TabIndex        =   10
+      Top             =   1080
+      Width           =   1545
+   End
+End
+Attribute VB_Name = "diaARp01a"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+'*** ES/2000 (ES/2001 - ES/2005) is the property of                     ***
+'*** ESI Software Engineering, Inc, Stanwood, Washington, USA          ***
+'*** and is protected under US and International copyright             ***
+'*** laws and treaties.                                                ***
+
+'See the UpdateTables prodecure for database revisions
+
+Option Explicit
+
+Private Const MaxInvoiceRange As Integer = 20
+
+'*************************************************************************************
+' diaPar01a - Print AR Invoice
+'
+' Created: (cjs)
+' Revisions:
+'   04/02/02 (nth) Fixed error with PS type invoice not displaying
+'   07/01/02 (nth) Added SO item comments check box
+'   07/01/02 (nth) Added invoice printed date
+'   07/01/02 (nth) Enabled preprinted forms
+'   07/16/02 (nth) Fixed Bug with Jevco's SO comments
+'   08/13/02 (nth) Revised form name and fixed runtime error with credit/debit memo's
+'   07/15/03 (nth) Added custom reports support
+'   01/16/03 (nth) Print range of invoices
+'   03/23/04 (nth) Added lot option per INTCOA
+'
+'*************************************************************************************
+
+Dim bOnLoad As Byte
+Dim bCancel As Byte
+Dim bGoodInv As Byte
+Public bRemote As Byte
+Dim startDate As String
+
+Dim iUserLogo As Integer
+
+Private txtKeyPress() As New EsiKeyBd
+Private txtGotFocus() As New EsiKeyBd
+Private txtKeyDown() As New EsiKeyBd
+
+
+
+Private Sub cbShowCheck_KeyPress(KeyAscii As Integer)
+'    KeyLock KeyAscii
+End Sub
+
+'*************************************************************************************
+
+Private Sub cmbInv_Click()
+   GetInvoice cmbInv, lblPre, lblTyp, lblNme
+End Sub
+
+Private Sub cmbInv2_Click()
+   GetInvoice cmbInv2, lblPre2, lblTyp2, lblNme2
+End Sub
+
+Private Sub SetComboIndex(ByRef cbo As ComboBox)
+   Dim txt As String, Index As Integer
+   txt = cbo.Text
+   Index = cbo.ListIndex
+   If Index >= 0 Then
+      If cbo.ItemData(Index) = txt Then
+         Exit Sub
+      End If
+   End If
+   
+   Dim i As Integer
+   For i = 0 To cbo.ListCount - 1
+      If txt = CStr(cbo.List(i)) Then
+         cbo.ListIndex = i
+         'Debug.Print cbo.Text & " " & cbo.List(cbo.ListIndex) & " " & Val(cbo)
+         Exit Sub
+      End If
+   Next
+   
+   If Index >= 0 Then
+      cbo.ListIndex = -1
+   End If
+End Sub
+
+
+Private Sub cmbInv_LostFocus()
+   'If Val(cmbInv) > 0 Then
+      'cmbInv = CheckLen(cmbInv, 6)
+      'cmbInv = Format(Abs(Val(cmbInv)), "000000")
+   'End If
+   SetComboIndex cmbInv
+   GetInvoice cmbInv, lblPre, lblTyp, lblNme
+End Sub
+
+Private Sub cmbInv2_LostFocus()
+   SetComboIndex cmbInv2
+   If Val(cmbInv) >= Val(cmbInv2) Then
+      If Val(cmbInv2) > 0 Then MsgBox "Must be Greater than Starting Invoice Number", vbExclamation
+      'cmbInv2 = ""
+      lblPre2.Caption = ""
+      lblTyp2.Caption = ""
+      lblNme2.Caption = ""
+   End If
+   'If Val(cmbInv2) > 0 Then
+      'cmbInv2 = CheckLen(cmbInv2, 6)
+      'cmbInv2 = Format(Abs(Val(cmbInv2)), "000000")
+   'End If
+   If Len(cmbInv2) > 0 Then GetInvoice cmbInv2, lblPre2, lblTyp2, lblNme2
+   'If ForceRangePrint Then
+   ' optDis.enabled = False
+   'Else
+   ' optDis.enabled = True
+   'End If
+   
+End Sub
+
+Private Sub cmdCan_Click()
+   Unload Me
+End Sub
+
+Private Sub cmdCan_MouseDown(Button As Integer, _
+                             Shift As Integer, X As Single, Y As Single)
+   bCancel = True
+   cmbInv = ""
+End Sub
+
+Private Sub cmdHlp_Click(Value As Integer)
+   If cmdHlp Then
+      MouseCursor 13
+      SelectHelpTopic Me, "Reports"
+      MouseCursor 0
+      cmdHlp = False
+   End If
+End Sub
+
+Private Sub FillCombo()
+   Dim RdoCmb As ADODB.Recordset
+   Dim sInv As String
+   
+   Dim sStart As String
+   If txtSDte = "" Or txtSDte = "ALL" Then
+      sStart = "1/1/1900"
+   Else
+      sStart = txtSDte
+   End If
+   
+   On Error GoTo DiaErr1
+   
+   cmbInv.Clear
+   cmbInv2.Clear
+   
+   '    sSql = "SELECT INVNO FROM CihdTable WHERE INVTYPE<>'TM' " _
+   '        & "AND INVCANCELED=0 ORDER BY INVNO DESC"
+   sSql = "SELECT INVNO FROM CihdTable WHERE INVTYPE<>'TM' and INVDATE >= '" & sStart & "'" & vbCrLf _
+          & "ORDER BY INVNO DESC"
+   bSqlRows = clsADOCon.GetDataSet(sSql, RdoCmb)
+   If bSqlRows Then
+      With RdoCmb
+         cmbInv = Format(!InvNo, "000000")
+         Do Until .EOF
+            sInv = Format(!InvNo, "000000")
+            AddComboStr cmbInv.hWnd, sInv
+            AddComboStr cmbInv2.hWnd, sInv
+            .MoveNext
+         Loop
+         .Cancel
+      End With
+   End If
+   GetInvoice cmbInv, lblPre, lblTyp, lblNme
+   'GetInvoice cmbInv2, lblPre2, lblTyp2, lblNme2
+   cmbInv2 = ""
+   Set RdoCmb = Nothing
+   Exit Sub
+   
+DiaErr1:
+   sProcName = "fillcombo"
+   CurrError.Number = Err.Number
+   CurrError.Description = Err.Description
+   DoModuleErrors Me
+End Sub
+
+Private Sub cmdMail_Click()
+
+   Dim first As Long, last As Long, i As Long
+   first = Val(cmbInv)
+   last = Val("0" & cmbInv2)
+   If last < first Then
+      last = first
+   End If
+   Dim count As Long
+   count = 0
+   
+   For i = first To last
+      Dim rdo As ADODB.Recordset
+      sSql = "SELECT INVNO, RTRIM(INVCUST) FROM CihdTable WHERE INVNO = " & CStr(i)
+      If clsADOCon.GetDataSet(sSql, rdo, ES_FORWARD) Then
+         Dim cust As String
+         cust = rdo.Fields(1)
+         rdo.Close
+         If cust <> "" Then
+         
+            ' see if this report is available
+            'Dim emailer As New KeyMailer - VB bug - retains old object
+            Dim emailer As KeyMailer
+            Set emailer = New KeyMailer
+            emailer.ReportName = "CustInvc"
+            If Not emailer.GetReportInfo(True) Then
+               Set emailer = Nothing
+               Exit Sub
+            End If
+            emailer.DistributionListKey = cust
+            emailer.AddLongParameter "INVNO", i
+            emailer.AddStringParameter "INVCUST", cust
+            emailer.AddBooleanParameter "ShowDescription", True
+            
+            'currently generates pdfs for all invoices
+            'uncomment to generate pdf only if a valid email address
+            'If emailer.IsRequestValid = VAL_ValidWithDistList Then
+               If Not emailer.Generate Then
+                  MsgBox "Unable to queue invoice"
+                  Set emailer = Nothing
+                  Return
+               End If
+               count = count + 1
+            'End If
+            Set emailer = Nothing
+            
+         End If
+      Else
+         rdo.Close      'if no invoice by this number, skip it
+      End If
+      Set rdo = Nothing
+   Next
+   
+   Set emailer = Nothing
+
+ 
+   Dim msg As String
+   If first = last Then
+      msg = "email request for invoice " & first & " queued"
+   Else
+      msg = count & " email requests for invoices " & first & " through " & last & " queued"
+   End If
+   MsgBox msg
+End Sub
+
+Private Sub Form_Activate()
+   On Error Resume Next
+   MdiSect.lblBotPanel = Caption
+   If bOnLoad Then
+      MouseCursor 13
+      'FillCombo
+      ' Set the Company logo field
+      GetUseLogo
+      
+      bOnLoad = False
+   End If
+   MouseCursor 0
+End Sub
+
+Private Sub Form_Load()
+   If bRemote Then
+      Me.WindowState = vbMinimized
+   Else
+      FormLoad Me
+      sCurrForm = Caption
+      FormatControls
+      GetOptions
+      Dim startDate As Date
+      startDate = DateAdd("m", -12, Now)
+      txtSDte = Format(startDate, "MM/dd/yy")
+      FillCombo
+      bOnLoad = True
+   End If
+End Sub
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
+   SaveOptions
+End Sub
+
+Private Sub Form_Resize()
+   Refresh
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+   If Not bRemote Then
+      FormUnload
+   End If
+   Set diaARp01a = Nothing
+End Sub
+
+Public Function PrintSO(lInv As Long) As Byte
+   
+   Dim sCustomReport As String
+   Dim cCRViewer As EsCrystalRptViewer
+   Dim aRptPara As New Collection
+   Dim aRptParaType As New Collection
+   Dim aFormulaValue As New Collection
+   Dim aFormulaName As New Collection
+   
+   MouseCursor 13
+   On Error GoTo DiaErr1
+   aFormulaName.Add "CompanyName"
+   aFormulaValue.Add CStr("'" & CStr(sFacility) & "'")
+   Set cCRViewer = New EsCrystalRptViewer
+   cCRViewer.Init
+   sCustomReport = GetCustomReport("finar01s")
+   cCRViewer.SetReportFileName sCustomReport, sReportPath
+   cCRViewer.SetReportTitle = sCustomReport
+   
+   If optDsc.Value = vbChecked Then
+        aFormulaName.Add "Dsc"
+        aFormulaValue.Add "'1'"
+   End If
+   If optExt.Value = vbChecked Then
+        aFormulaName.Add "ExtDesc"
+        aFormulaValue.Add "'1'"
+   End If
+   If optIt.Value = vbChecked Then
+        aFormulaName.Add "ItComments"
+        aFormulaValue.Add "'1'"
+   End If
+   If optLot = vbChecked Then
+        aFormulaName.Add "Lots"
+        aFormulaValue.Add Val(optLot)
+   End If
+   aFormulaName.Add "ShowOurLogo"
+   aFormulaValue.Add CStr("'" & CStr(iUserLogo) & "'")
+   
+   
+   aFormulaName.Add "ShowCheckLine"
+   If cbShowCheck.Value = vbChecked Then aFormulaValue.Add "'1'" Else aFormulaValue.Add "'0'"
+   
+   
+   cCRViewer.SetReportFormulaFields aFormulaName, aFormulaValue
+
+   'note: sSql may get overwritten by events
+   'when PrintMemo is called directly from another form
+   Dim CrystalSql As String
+   CrystalSql = ""
+   CrystalSql = cCRViewer.GetReportSelectionFormula
+   
+   If (CrystalSql <> "") Then
+      CrystalSql = CrystalSql & " AND "
+   End If
+   
+   CrystalSql = CrystalSql & "{CihdTable.INVNO}=" & lInv & " "
+   
+   cCRViewer.SetReportSelectionFormula CrystalSql
+   cCRViewer.CRViewerSize Me
+   cCRViewer.SetDbTableConnection
+   cCRViewer.ShowGroupTree False
+   cCRViewer.OpenCrystalReportObject Me, aFormulaName, Val(txtCopies)
+ 
+   cCRViewer.ClearFieldCollection aRptPara
+   cCRViewer.ClearFieldCollection aFormulaName
+   cCRViewer.ClearFieldCollection aFormulaValue
+   
+   MouseCursor 0
+   PrintSO = 1
+   Exit Function
+   
+DiaErr1:
+   sProcName = "printso"
+   CurrError.Number = Err.Number
+   CurrError.Description = Err.Description
+   DoModuleErrors Me
+End Function
+
+'Public Function PrintSO1(lInv As Long) As Byte
+'   Dim sCustomReport As String
+'
+'   MouseCursor 13
+'
+'   On Error GoTo DiaErr1
+'   SetMdiReportsize MdiSect
+'
+'   MdiSect.crw.Formulas(0) = "CompanyName='" & sFacility & "'"
+'
+'   sCustomReport = GetCustomReport("finar01s")
+'   MdiSect.crw.ReportFileName = sReportPath & sCustomReport
+'
+'   If optDsc.Value = vbChecked Then MdiSect.crw.Formulas(1) = "Dsc='1'"
+'   If optExt.Value = vbChecked Then MdiSect.crw.Formulas(2) = "ExtDesc='1'"
+'   If optIt.Value = vbChecked Then MdiSect.crw.Formulas(3) = "ItComments='1'"
+'
+'   ' Make backward compatible with invoices that do not display lots.
+'   If optLot = vbChecked Then
+'      MdiSect.crw.Formulas(4) = "Lots=" & Val(optLot)
+'   End If
+'   ' Add Company Logo depending on the flag in the database
+'   MdiSect.crw.Formulas(5) = "ShowOurLogo='" & CStr(iUserLogo) & "'"
+'
+'   'note: sSql may get overwritten by events
+'   'when PrintMemo is called directly from another form
+'   Dim CrystalSql As String
+'   'sSql = "{CihdTable.INVNO}=" & lInv & " "
+'   CrystalSql = "{CihdTable.INVNO}=" & lInv & " "
+'   MdiSect.crw.CopiesToPrinter = Val(txtCopies)
+'   MdiSect.crw.SelectionFormula = CrystalSql
+'   SetCrystalAction Me
+'   MouseCursor 0
+'   PrintSO1 = 1
+'   Exit Function
+'
+'DiaErr1:
+'   sProcName = "printso"
+'   CurrError.Number = Err.Number
+'   CurrError.Description = Err.Description
+'   DoModuleErrors Me
+'End Function
+
+Private Sub FormatControls()
+   Dim b As Byte
+   b = AutoFormatControls(Me, txtKeyPress(), txtGotFocus(), txtKeyDown())
+End Sub
+
+Private Sub SaveOptions()
+   Dim sOptions As String
+   sOptions = Trim(str(txtCopies)) _
+              & Trim(str(optDsc.Value)) _
+              & Trim(str(optExt.Value)) _
+              & Trim(str(optIt.Value)) _
+              & Trim(optLot.Value) _
+              & Trim(cbShowCheck.Value)
+   SaveSetting "Esi2000", "EsiFina", Me.Name, sOptions
+   SaveSetting "Esi2000", "EsiFina", Me.Name & TTSAVEPRN, lblPrinter
+End Sub
+
+Private Sub GetOptions()
+   Dim sOptions As String
+   On Error Resume Next
+   sOptions = GetSetting("Esi2000", "EsiFina", Me.Name, sOptions)
+   If Len(Trim(sOptions)) > 0 Then
+      txtCopies = Val(Mid(sOptions, 1, 1))
+      optDsc.Value = Val(Mid(sOptions, 2, 1))
+      optExt.Value = Val(Mid(sOptions, 3, 1))
+      optIt.Value = Val(Mid(sOptions, 4, 1))
+      optLot.Value = Val(Mid(sOptions, 5, 1))
+      If Len(sOptions) < 6 Then sOptions = sOptions & "1"
+      cbShowCheck.Value = Val(Mid(sOptions, 6, 1))
+   Else
+      txtCopies = 1
+      optDsc.Value = vbUnchecked
+      optExt.Value = vbUnchecked
+      optIt.Value = vbUnchecked
+      optLot.Value = vbUnchecked
+      cbShowCheck.Value = vbUnchecked
+   End If
+   lblPrinter = GetSetting("Esi2000", "EsiFina", Me.Name & TTSAVEPRN, lblPrinter)
+   If lblPrinter = "" Then lblPrinter = "Default Printer"
+End Sub
+
+
+Private Sub optDis_Click()
+'    If ForceRangePrint Then
+'        optPrn = 1
+'        Exit Sub
+'    End If
+
+    If TotalInvoicesToPrint > MaxInvoiceRange Then
+        MsgBox "You have exceeded the maximum number of invoices to view (" & MaxInvoiceRange & ")", vbOKOnly
+        Exit Sub
+    End If
+    
+
+    PrintReport
+End Sub
+
+Private Sub optDsc_KeyPress(KeyAscii As Integer)
+'   KeyLock KeyAscii
+End Sub
+
+Private Sub optExt_KeyPress(KeyAscii As Integer)
+'   KeyLock KeyAscii
+End Sub
+
+
+Private Sub optPrn_Click()
+   PrintReport
+End Sub
+
+Public Sub PrintReport()
+   Dim bPrinted As Byte
+   Dim RdoInv As ADODB.Recordset
+   Dim l As Long
+   Dim lEnd As Long
+   
+   On Error GoTo DiaErr1
+   
+   ' build the IN statement
+   sSql = "SELECT INVNO,INVTYPE,INVPRINTED FROM CihdTable WHERE INVNO IN("
+   l = Val(cmbInv)
+   lEnd = Val(cmbInv2)
+   If lEnd < 1 Then
+      lEnd = Val(cmbInv)
+   End If
+   For l = l To lEnd
+      sSql = sSql & l & ","
+   Next
+   sSql = Left(sSql, Len(sSql) - 1) & ")"
+   bSqlRows = clsADOCon.GetDataSet(sSql, RdoInv, ES_KEYSET)
+   Debug.Print sSql
+   
+   If bSqlRows Then
+      With RdoInv
+         Do While Not .EOF
+            Select Case !INVTYPE
+               Case "SO"
+                  bPrinted = PrintSO(!InvNo)
+               Case "PS"
+                  bPrinted = PrintPS(!InvNo)
+               Case Else
+                  bPrinted = PrintMemo(!InvNo, !INVTYPE)
+            End Select
+            If bPrinted = 1 Then
+               If IsNull(!INVPRINTED) Then
+                  !INVPRINTED = Format(GetServerDateTime(), "mm/dd/yy")
+                  .Update
+               End If
+               If Err > 0 Then ValidateEdit Me
+            End If
+            .MoveNext
+         Loop
+      End With
+   End If
+   Set RdoInv = Nothing
+   Exit Sub
+DiaErr1:
+   sProcName = "printreport"
+   CurrError.Number = Err.Number
+   CurrError.Description = Err.Description
+   DoModuleErrors Me
+End Sub
+
+Public Function PrintPS(lInv As Long) As Byte
+   Dim sCustomReport As String
+   Dim cCRViewer As EsCrystalRptViewer
+   Dim aRptPara As New Collection
+   Dim aRptParaType As New Collection
+   Dim aFormulaValue As New Collection
+   Dim aFormulaName As New Collection
+   
+   MouseCursor 13
+   
+   On Error GoTo DiaErr1
+    
+   aFormulaName.Add "CompanyName"
+   aFormulaValue.Add CStr("'" & CStr(sFacility) & "'")
+   Set cCRViewer = New EsCrystalRptViewer
+   cCRViewer.Init
+   sCustomReport = GetCustomReport("finar01p")
+   cCRViewer.SetReportFileName sCustomReport, sReportPath
+   cCRViewer.SetReportTitle = sCustomReport
+   If optDsc.Value = vbChecked Then
+        aFormulaName.Add "Dsc"
+        aFormulaValue.Add "'1'"
+   End If
+   If optExt.Value = vbChecked Then
+        aFormulaName.Add "ExtDesc"
+        aFormulaValue.Add "'1'"
+   End If
+   If optIt.Value = vbChecked Then
+        aFormulaName.Add "ItComments"
+        aFormulaValue.Add "'1'"
+   End If
+   ' Make backward compatible with invoices that do not display lots.
+   If optLot = vbChecked Then
+        aFormulaName.Add "Lots"
+        aFormulaValue.Add Val(optLot)
+   End If
+    ' Show Company Logo if checked
+   aFormulaName.Add "ShowOurLogo"
+   aFormulaValue.Add CStr("'" & CStr(iUserLogo) & "'")
+   
+   aFormulaName.Add "ShowCheckLine"
+   If cbShowCheck.Value = vbChecked Then aFormulaValue.Add "'1'" Else aFormulaValue.Add "'0'"
+   
+   
+   cCRViewer.SetReportFormulaFields aFormulaName, aFormulaValue
+   
+   'note: sSql may get overwritten by events
+   'when PrintMemo is called directly from another form
+   Dim CrystalSql As String
+   CrystalSql = ""
+   CrystalSql = cCRViewer.GetReportSelectionFormula
+   
+   If (CrystalSql <> "") Then
+      CrystalSql = CrystalSql & " AND "
+   End If
+   
+   CrystalSql = CrystalSql & "{CihdTable.INVNO}=" & lInv & " "
+   cCRViewer.SetReportSelectionFormula CrystalSql
+   cCRViewer.CRViewerSize Me
+   cCRViewer.SetDbTableConnection
+   cCRViewer.ShowGroupTree False
+   cCRViewer.OpenCrystalReportObject Me, aFormulaName, Val(txtCopies)
+ 
+   cCRViewer.ClearFieldCollection aRptPara
+   cCRViewer.ClearFieldCollection aFormulaName
+   cCRViewer.ClearFieldCollection aFormulaValue
+   
+   MouseCursor 0
+   PrintPS = 1
+   Exit Function
+   
+DiaErr1:
+   sProcName = "printps"
+   CurrError.Number = Err.Number
+   CurrError.Description = Err.Description
+   DoModuleErrors Me
+End Function
+
+'
+'Public Function PrintPS1(lInv As Long) As Byte
+'   Dim sCustomReport As String
+'   MouseCursor 13
+'
+'   On Error GoTo DiaErr1
+'   SetMdiReportsize MdiSect
+'   MdiSect.crw.Formulas(0) = "CompanyName='" & sFacility & "'"
+'
+'   sCustomReport = GetCustomReport("finar01p")
+'   MdiSect.crw.ReportFileName = sReportPath & sCustomReport
+'
+'   If optDsc.Value = vbChecked Then MdiSect.crw.Formulas(1) = "Dsc = '1'"
+'   If optExt.Value = vbChecked Then MdiSect.crw.Formulas(2) = "ExtDesc='1'"
+'   If optIt.Value = vbChecked Then MdiSect.crw.Formulas(3) = "ItComments='1'"
+'
+'   ' Make backward compatible with invoices that do not display lots.
+'   If optLot = vbChecked Then
+'      MdiSect.crw.Formulas(4) = "Lots=" & Val(optLot)
+'   End If
+'    ' Show Company Logo if checked
+'    MdiSect.crw.Formulas(5) = "ShowOurLogo='" & CStr(iUserLogo) & "'"
+'
+'   'note: sSql may get overwritten by events
+'   'when PrintMemo is called directly from another form
+'   Dim CrystalSql As String
+'   'sSql = "{CihdTable.INVNO}=" & lInv & " "
+'   CrystalSql = "{CihdTable.INVNO}=" & lInv & " "
+'   MdiSect.crw.CopiesToPrinter = Val(txtCopies)
+'   MdiSect.crw.SelectionFormula = CrystalSql
+'
+'   SetCrystalAction Me
+'   MouseCursor 0
+'   PrintPS1 = 1
+'   Exit Function
+'
+'DiaErr1:
+'   sProcName = "printps"
+'   CurrError.Number = Err.Number
+'   CurrError.Description = Err.Description
+'   DoModuleErrors Me
+'End Function
+
+Public Function PrintMemo(lInv As Long, sType As String) As Byte
+   Dim sCustomReport As String
+   Dim cCRViewer As EsCrystalRptViewer
+   Dim aRptPara As New Collection
+   Dim aRptParaType As New Collection
+   Dim aFormulaValue As New Collection
+   Dim aFormulaName As New Collection
+   
+   MouseCursor 13
+   On Error GoTo DiaErr1
+   
+   aFormulaName.Add "CompanyName"
+   aFormulaValue.Add CStr("'" & CStr(sFacility) & "'")
+   aFormulaName.Add "ShowOurLogo"
+   aFormulaValue.Add CStr("'" & CStr(iUserLogo) & "'")
+   
+   aFormulaName.Add "ShowCheckLine"
+   If cbShowCheck.Value = vbChecked Then aFormulaValue.Add CStr("'1'") Else aFormulaValue.Add CStr("'0'")
+   
+   Set cCRViewer = New EsCrystalRptViewer
+   cCRViewer.Init
+   Select Case sType
+      Case "CM", "CA"
+         sCustomReport = GetCustomReport("finar01c")
+         cCRViewer.SetReportFileName sCustomReport, sReportPath
+         cCRViewer.SetReportTitle = sCustomReport
+      Case "DM"
+         sCustomReport = GetCustomReport("finar01d")
+         cCRViewer.SetReportFileName sCustomReport, sReportPath
+         cCRViewer.SetReportTitle = sCustomReport
+   End Select
+   
+   cCRViewer.SetReportFormulaFields aFormulaName, aFormulaValue
+   
+   'note: sSql may get overwritten by events
+   'when PrintMemo is called directly from another form
+   Dim CrystalSql As String
+   CrystalSql = ""
+   CrystalSql = cCRViewer.GetReportSelectionFormula
+   
+   If (CrystalSql <> "") Then
+      CrystalSql = CrystalSql & " AND "
+   End If
+   
+   CrystalSql = CrystalSql & "{CihdTable.INVNO}=" & lInv & " "
+   
+   cCRViewer.SetReportSelectionFormula CrystalSql
+   cCRViewer.CRViewerSize Me
+   cCRViewer.SetDbTableConnection
+   cCRViewer.ShowGroupTree False
+   cCRViewer.OpenCrystalReportObject Me, aFormulaName, Val(txtCopies)
+ 
+   cCRViewer.ClearFieldCollection aRptPara
+   cCRViewer.ClearFieldCollection aFormulaName
+   cCRViewer.ClearFieldCollection aFormulaValue
+   
+   MouseCursor 0
+   PrintMemo = 1
+   Exit Function
+   
+DiaErr1:
+   sProcName = "printmemo"
+   CurrError.Number = Err.Number
+   CurrError.Description = Err.Description
+   DoModuleErrors Me
+End Function
+
+
+'
+'Public Function PrintMemo1(lInv As Long, sType As String) As Byte
+'   Dim sCustomReport As String
+'
+'
+'   MouseCursor 13
+'   On Error GoTo DiaErr1
+'
+'   SetMdiReportsize MdiSect
+'   MdiSect.Crw.Formulas(0) = "CompanyName='" & sFacility & "'"
+'   MdiSect.Crw.Formulas(1) = "ShowOurLogo='" & CStr(iUserLogo) & "'"
+'
+'   Select Case sType
+'      Case "CM", "CA"
+'         sCustomReport = GetCustomReport("finar01c")
+'         MdiSect.Crw.ReportFileName = sReportPath & sCustomReport
+'      Case "DM"
+'         sCustomReport = GetCustomReport("finar01d")
+'         MdiSect.Crw.ReportFileName = sReportPath & sCustomReport
+'   End Select
+'
+'   'note: sSql may get overwritten by events
+'   'when PrintMemo is called directly from another form
+'   Dim CrystalSql As String
+'   CrystalSql = "{CihdTable.INVNO}=" & lInv & " "
+'   MdiSect.Crw.CopiesToPrinter = Val(txtCopies)
+'
+'   MdiSect.Crw.SelectionFormula = CrystalSql
+'
+'   SetCrystalAction Me
+'   MouseCursor 0
+'   PrintMemo1 = 1
+'   Exit Function
+'
+'DiaErr1:
+'   sProcName = "printmemo"
+'   CurrError.Number = Err.Number
+'   CurrError.Description = Err.Description
+'   DoModuleErrors Me
+'End Function
+
+Private Sub ShowPrinters_Click(Value As Integer)
+   SysPrinters.Show
+   ShowPrinters.Value = False
+End Sub
+
+Private Sub txtCopies_LostFocus()
+   If Val(txtCopies) > 9 Then txtCopies = 9
+   If Val(txtCopies) < 1 Then txtCopies = 1
+End Sub
+
+Private Sub GetInvoice( _
+                       cmbInvoice As ComboBox, _
+                       lblPrefix As Label, _
+                       lblType As Label, _
+                       lblCust As Label)
+   
+   Dim RdoInv As ADODB.Recordset
+   On Error GoTo DiaErr1
+   
+   '    sSql = "SELECT INVNO,INVPRE,INVTYPE,CUNICKNAME,CUNAME FROM " _
+   '        & "CihdTable INNER JOIN CustTable ON INVCUST = CUREF " _
+   '        & "WHERE (INVNO = " & Val(cmbInvoice) & ") AND " _
+   '        & "(CihdTable.INVCANCELED = 0)"
+   sSql = "SELECT INVNO,INVPRE,INVTYPE,CUNICKNAME,CUNAME FROM " _
+          & "CihdTable INNER JOIN CustTable ON INVCUST = CUREF " _
+          & "WHERE INVNO = " & Val(cmbInvoice)
+   bSqlRows = clsADOCon.GetDataSet(sSql, RdoInv)
+   If bSqlRows Then
+      With RdoInv
+         cmbInvoice = Format(!InvNo, "000000")
+         lblPrefix = "" & Trim(!INVPRE)
+         lblType = GetInvoiceType(!INVTYPE)
+         lblCust = "" & Trim(!CUNAME)
+         .Cancel
+      End With
+   Else
+      lblType = ""
+      lblCust = "*** No Current Invoice ***"
+   End If
+   Set RdoInv = Nothing
+   Exit Sub
+   
+DiaErr1:
+   sProcName = "getinvoice"
+   CurrError.Number = Err.Number
+   CurrError.Description = Err.Description
+   lblType = ""
+   lblCust = "*** No Current Invoice ***"
+   DoModuleErrors Me
+End Sub
+
+Private Sub GetUseLogo()
+    Dim RdoLogo As ADODB.Recordset
+    Dim bRows As Boolean
+    ' Assumed that COMREF is 1 all the time
+    sSql = "SELECT ISNULL(COLUSELOGO, 0) as COLUSELOGO FROM ComnTable WHERE COREF = 1"
+    bRows = clsADOCon.GetDataSet(sSql, RdoLogo, ES_FORWARD)
+
+    If bRows Then
+        With RdoLogo
+            iUserLogo = !COLUSELOGO
+        End With
+        'RdoLogo.Close
+        ClearResultSet RdoLogo
+    End If
+End Sub
+
+Private Sub txtSDte_DropDown()
+   ShowCalendar Me
+End Sub
+
+Private Sub txtSDte_GotFocus()
+   startDate = txtSDte
+End Sub
+
+Private Sub txtSDte_LostFocus()
+'   If Trim(txtSDte) = "" Or txtSDte = "ALL" Then
+'      txtSDte = "ALL"
+'   Else
+'      txtSDte = CheckDate(txtSDte)
+'   End If
+   If txtSDte <> startDate Then
+      FillCombo
+   End If
+End Sub
+
+'Private Function ForceRangePrint() As Boolean
+'    If (cmbInv <> cmbInv2) And Len(cmbInv2) > 0 Then ForceRangePrint = True Else ForceRangePrint = False
+'End Function
+
+
+Private Function TotalInvoicesToPrint() As Long
+    Dim rdoInvoices As ADODB.Recordset
+    Dim last As String
+    If cmbInv2 = "" Then
+      last = cmbInv
+    Else
+      last = cmbInv2
+    End If
+    sSql = "SELECT COUNT(*) AS TOTALINVOICES FROM CihdTable WHERE INVNO BETWEEN " & cmbInv & " AND " & last
+    TotalInvoicesToPrint = 0
+    On Error Resume Next
+    bSqlRows = clsADOCon.GetDataSet(sSql, rdoInvoices)
+    If bSqlRows Then
+        TotalInvoicesToPrint = rdoInvoices!TOTALINVOICES
+    End If
+    Set rdoInvoices = Nothing
+End Function
+

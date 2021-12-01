@@ -1,0 +1,15 @@
+6/21/06 Establish uniform methods
+MatlMMe02a		diaMMe02a
+PickMCe04a                         diaMCe04a
+ShopSHf04a                         diaSHf04a
+
+6/21/06 Establish uniform methods
+New			Old
+SysFavorite		diaFavor	
+SysComments		Comments
+SysSettings		diaSetng
+SysWarn			diaEnd
+SysAbout			diaabt
+SysOpen			diaSql
+SysZoom			diaZoom
+SysMsgBox		Popmsg

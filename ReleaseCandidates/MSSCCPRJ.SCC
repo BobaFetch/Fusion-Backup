@@ -1,0 +1,6 @@
+SCC = This is a Source Code Control file.
+
+[EsiQual.vbp]
+SCC_Aux_Path = 10.10.10.19:8877:ESI VSS on ESI-SBS
+SCC_Project_Name = $/Fusion/QUAL
+

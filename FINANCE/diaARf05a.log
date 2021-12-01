@@ -1,0 +1,5 @@
+Line 128: Class ComctlLib.ProgressBar of control Prg1 was not a loaded control class.
+Line 463: Class MSFlexGridLib.MSFlexGrid of control Grid1 was not a loaded control class.
+Line 482: Class Threed.SSRibbon of control cmdHlp was not a loaded control class.
+Line 502: Class ResizeLibCtl.ReSize of control ReSize1 was not a loaded control class.
+Line 515: Class Threed.SSRibbon of control ShowPrinters was not a loaded control class.
